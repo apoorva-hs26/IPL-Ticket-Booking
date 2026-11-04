@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <!DOCTYPE html>
 <html>
@@ -61,3 +62,327 @@
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Ticket Booking</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="site-header">
+        <a href="#home" class="brand">🏏 IPL <b>Tickets</b></a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#matches">Matches</a>
+            <a href="#book">Book Ticket</a>
+            <a href="#my-bookings">My Bookings</a>
+            <a href="#guidelines">Guidelines</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="eyebrow">THE BIGGEST CRICKET CELEBRATION</p>
+                <h1>Feel the <span>Game.</span><br>Live the IPL.</h1>
+                <p>Book your tickets and enjoy the excitement of cricket.</p>
+                <a href="#matches" class="btn btn-primary">Explore Matches</a>
+            </div>
+            <div class="hero-ball">🏏</div>
+        </section>
+
+        <!-- About IPL -->
+        <section class="section about">
+            <div>
+                <p class="eyebrow">ABOUT IPL</p>
+                <h2>One League. Millions of Fans.</h2>
+            </div>
+            <p>
+                The Indian Premier League is a popular cricket tournament
+                featuring exciting teams and talented players.
+                Enjoy the cricket experience with your favourite team.
+            </p>
+        </section>
+
+        <!-- Upcoming Matches -->
+        <section class="section" id="matches">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">UPCOMING MATCHES</p>
+                    <h2>Match Schedule</h2>
+                </div>
+
+                <label class="filter-label">
+                    Filter by Team
+                    <select id="teamFilter">
+                        <option value="all">All Teams</option>
+                        <option value="CSK">CSK</option>
+                        <option value="MI">MI</option>
+                        <option value="RCB">RCB</option>
+                        <option value="KKR">KKR</option>
+                        <option value="SRH">SRH</option>
+                        <option value="RR">RR</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="match-grid">
+
+                <article class="match-card" data-teams="CSK MI">
+                    <div class="match-top">
+                        <span class="match-tag">MATCH 01</span>
+                        <span>Sample Fixture</span>
+                    </div>
+                    <div class="teams">
+                        <div class="team">
+                            <span class="team-logo csk">CSK</span>
+                            <b>Chennai Super Kings</b>
+                        </div>
+                        <span class="vs">VS</span>
+                        <div class="team">
+                            <span class="team-logo mi">MI</span>
+                            <b>Mumbai Indians</b>
+                        </div>
+                    </div>
+                    <p class="venue">📍 Chennai Stadium</p>
+                    <button class="btn btn-card" data-match="CSK vs MI">
+                        Book Ticket
+                    </button>
+                </article>
+
+                <article class="match-card" data-teams="RCB KKR">
+                    <div class="match-top">
+                        <span class="match-tag">MATCH 02</span>
+                        <span>Sample Fixture</span>
+                    </div>
+                    <div class="teams">
+                        <div class="team">
+                            <span class="team-logo rcb">RCB</span>
+                            <b>Royal Challengers Bengaluru</b>
+                        </div>
+                        <span class="vs">VS</span>
+                        <div class="team">
+                            <span class="team-logo kkr">KKR</span>
+                            <b>Kolkata Knight Riders</b>
+                        </div>
+                    </div>
+                    <p class="venue">📍 Bengaluru Stadium</p>
+                    <button class="btn btn-card" data-match="RCB vs KKR">
+                        Book Ticket
+                    </button>
+                </article>
+
+                <article class="match-card" data-teams="SRH RR">
+                    <div class="match-top">
+                        <span class="match-tag">MATCH 03</span>
+                        <span>Sample Fixture</span>
+                    </div>
+                    <div class="teams">
+                        <div class="team">
+                            <span class="team-logo srh">SRH</span>
+                            <b>Sunrisers Hyderabad</b>
+                        </div>
+                        <span class="vs">VS</span>
+                        <div class="team">
+                            <span class="team-logo rr">RR</span>
+                            <b>Rajasthan Royals</b>
+                        </div>
+                    </div>
+                    <p class="venue">📍 Hyderabad Stadium</p>
+                    <button class="btn btn-card" data-match="SRH vs RR">
+                        Book Ticket
+                    </button>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Ticket Booking Form -->
+        <section class="section booking-section" id="book">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">RESERVE YOUR SEAT</p>
+                    <h2>Book Your Ticket</h2>
+                </div>
+            </div>
+
+            <div class="booking-layout">
+
+                <form class="booking-form" id="bookingForm">
+                    <div class="form-grid">
+
+                        <label>Full Name
+                            <input type="text" id="name" required
+                                   placeholder="Enter your name">
+                        </label>
+
+                        <label>Email Address
+                            <input type="email" id="email" required
+                                   placeholder="Enter your email">
+                        </label>
+
+                        <label>Phone Number
+                            <input type="tel" id="phone" required
+                                   pattern="[0-9]{10}"
+                                   placeholder="10 digit number">
+                        </label>
+
+                        <label>Select Match
+                            <select id="match" required>
+                                <option value="">Choose Match</option>
+                                <option>CSK vs MI</option>
+                                <option>RCB vs KKR</option>
+                                <option>SRH vs RR</option>
+                            </select>
+                        </label>
+
+                        <label>Stand Category
+                            <select id="stand" required>
+                                <option value="">Choose Stand</option>
+                                <option value="General">General</option>
+                                <option value="Premium">Premium</option>
+                                <option value="VIP">VIP</option>
+                            </select>
+                        </label>
+
+                        <label>Number of Tickets
+                            <input type="number" id="quantity"
+                                   min="1" max="10" value="1" required>
+                        </label>
+
+                    </div>
+
+                    <p class="form-note">
+                        Select your match, stand and ticket quantity.
+                    </p>
+
+                    <button type="submit" class="btn btn-primary">
+                        Confirm Booking
+                    </button>
+
+                    <p id="formMessage" class="status-message"></p>
+                </form>
+
+                <!-- Booking Summary -->
+                <aside class="summary-card">
+                    <p class="eyebrow">YOUR ORDER</p>
+                    <h3>Booking Summary</h3>
+
+                    <div class="summary-row">
+                        <span>Match</span>
+                        <b id="summaryMatch">Not selected</b>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Stand</span>
+                        <b id="summaryStand">Not selected</b>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Ticket Price</span>
+                        <b id="summaryPrice">₹0</b>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Quantity</span>
+                        <b id="summaryQuantity">1</b>
+                    </div>
+
+                    <div class="total-row">
+                        <span>Total Amount</span>
+                        <strong id="totalAmount">₹0</strong>
+                    </div>
+                </aside>
+
+            </div>
+        </section>
+
+        <!-- My Bookings -->
+        <section class="section" id="my-bookings">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR BOOKINGS</p>
+                    <h2>My Ticket Bookings</h2>
+                </div>
+                <button class="btn btn-outline" id="clearBookings" type="button">
+                    Clear Bookings
+                </button>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Name</th>
+                            <th>Match</th>
+                            <th>Stand</th>
+                            <th>Tickets</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="bookingRecords">
+                        <tr class="empty-row">
+                            <td colspan="6">No bookings available yet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Guidelines -->
+        <section class="section guidelines" id="guidelines">
+            <p class="eyebrow">IMPORTANT INFORMATION</p>
+            <h2>Booking Guidelines</h2>
+
+            <div class="guideline-grid">
+                <article>
+                    <span>01</span>
+                    <h3>Choose Match</h3>
+                    <p>Select your favourite match before booking.</p>
+                </article>
+
+                <article>
+                    <span>02</span>
+                    <h3>Enter Details</h3>
+                    <p>Provide correct personal information.</p>
+                </article>
+
+                <article>
+                    <span>03</span>
+                    <h3>Select Tickets</h3>
+                    <p>Choose your preferred stand and quantity.</p>
+                </article>
+
+                <article>
+                    <span>04</span>
+                    <h3>Confirm Booking</h3>
+                    <p>Check your booking summary before confirming.</p>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <a href="#home" class="brand footer-brand">🏏 IPL Tickets</a>
+        <p>IPL Ticket Booking Website | Student Project</p>
+        <a href="#home">Back to Top ↑</a>
+    </footer>
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>
+>>>>>>> 15eb338adaad2ee82db1ff94d5e979445b49f22b
