@@ -1,0 +1,113 @@
+
+:root {
+    --primary: #071952;
+    --accent: #FFD700;
+    --background: #f4f6f9;
+    --text: #222;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+}
+
+nav {
+    background: var(--primary);
+    padding: 18px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+.hero {
+    background: linear-gradient(135deg, #071952, #088395);
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    margin-top: 55px;
+}
+
+.hero h1 {
+    font-size: 38px;
+}
+
+button {
+    background: var(--accent);
+    color: var(--primary);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: orange;
+}
+
+h2 {
+    text-align: center;
+    color: var(--primary);
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #ccc;
+}
+
+section {
+    padding: 20px;
+}
+
+footer {
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+form {
+    background: white;
+    padding: 30px;
+    margin: 30px auto;
+    width: 70%;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #ccc;
+}
+
+form input:not([type="radio"]),
+form select {
+    padding: 10px;
+    width: 90%;
+    margin-top: 5px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form button {
+    margin: 5px;
+}

@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IPL Ticket Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="booking.html">Book Ticket</a>
+</nav>
+
+<section class="hero">
+    <h1>IPL Ticket Booking Form</h1>
+    <p>Book Your Favourite Match!</p>
+</section>
+
+<form action="#" method="get">
+
+    <label>Name:</label><br>
+    <input type="text" name="name"
+    placeholder="Enter your name"
+    minlength="3" maxlength="30" required>
+    <br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email"
+    placeholder="Enter your email" required>
+    <br><br>
+
+    <label>Phone Number:</label><br>
+    <input type="tel" name="phone"
+    placeholder="10 digit number"
+    pattern="[0-9]{10}" required>
+    <br><br>
+
+    <label>Select Match:</label><br>
+    <select name="match" required>
+        <option value="">Choose Match</option>
+        <option>CSK vs MI</option>
+        <option>RCB vs KKR</option>
+        <option>SRH vs RR</option>
+    </select>
+    <br><br>
+
+    <label>Stand Category:</label><br>
+    <select name="stand" required>
+        <option value="">Choose Stand</option>
+        <option>General</option>
+        <option>Premium</option>
+        <option>VIP</option>
+    </select>
+    <br><br>
+
+    <label>Number of Tickets:</label><br>
+    <input type="number" name="tickets"
+    min="1" max="10" required>
+    <br><br>
+
+    <label>Booking Preference:</label><br>
+    <input type="radio" name="preference"
+    value="Online" required> Online
+
+    <input type="radio" name="preference"
+    value="Counter"> Counter
+
+    <br><br>
+
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+
+</form>
+
+<footer>
+    <p>IPL Ticket Booking Website</p>
+    <a href="index.html" style="color:white;">Back to Home</a>
+</footer>
+
+</body>
+</html>
