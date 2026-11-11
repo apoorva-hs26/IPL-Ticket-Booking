@@ -1,114 +1,62 @@
-const bookingForm = document.getElementById("bookingForm");
-const matchSelect = document.getElementById("match");
-const standSelect = document.getElementById("stand");
-const quantityInput = document.getElementById("quantity");
 
-const summaryMatch = document.getElementById("summaryMatch");
-const summaryStand = document.getElementById("summaryStand");
-const summaryPrice = document.getElementById("summaryPrice");
-const summaryQuantity = document.getElementById("summaryQuantity");
-const totalAmount = document.getElementById("totalAmount");
+// Activity 4: JavaScript Basics and User Interaction
 
-const bookingRecords = document.getElementById("bookingRecords");
-const teamFilter = document.getElementById("teamFilter");
+// 1. Reusable Toast Notification Function
+function showToast(message) {
+    let toast = document.getElementById("toast");
 
-const prices = {
-    "General": 500,
-    "Premium": 1500,
-    "VIP": 3000
-};
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toast";
+        document.body.appendChild(toast);
+    }
 
-function updateSummary() {
-    const match = matchSelect.value;
-    const stand = standSelect.value;
-    const quantity = Number(quantityInput.value) || 1;
-    const price = prices[stand] || 0;
+    toast.textContent = message;
+    toast.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #e85d04;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 8px;
+        font-size: 16px;
+        z-index: 9999;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    `;
 
-    summaryMatch.textContent = match || "Not selected";
-    summaryStand.textContent = stand || "Not selected";
-    summaryPrice.textContent = "₹" + price;
-    summaryQuantity.textContent = quantity;
-    totalAmount.textContent = "₹" + (price * quantity);
+    toast.style.display = "block";
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer = setTimeout(() => {
+        toast.style.display = "none";
+    }, 3000);
 }
 
-matchSelect.addEventListener("change", updateSummary);
-standSelect.addEventListener("change", updateSummary);
-quantityInput.addEventListener("input", updateSummary);
+// 2. Smooth Scrolling for Book Ticket Buttons
+const bookButtons = document.querySelectorAll(".btn-card");
 
-bookingForm.addEventListener("submit", function(event) {
-    event.preventDefault();
+bookButtons.forEach(button => {
+    button.addEventListener("click", function () {
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const match = matchSelect.value;
-    const stand = standSelect.value;
-    const quantity = Number(quantityInput.value);
+        const bookingForm = document.getElementById("book");
 
-    const booking = {
-        id: Date.now(),
-        name: name,
-        email: email,
-        phone: phone,
-        match: match,
-        stand: stand,
-        quantity: quantity,
-        total: prices[stand] * quantity
-    };
+        const selectedMatch = this.getAttribute("data-match");
 
-    const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
-    bookings.push(booking);
+        const matchSelect = document.getElementById("match");
 
-    localStorage.setItem("bookings", JSON.stringify(bookings));
-
-    document.getElementById("formMessage").textContent =
-        "Booking successful!";
-
-    bookingForm.reset();
-    updateSummary();
-    displayBookings();
-});
-
-function displayBookings() {
-    const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
-
-    bookingRecords.innerHTML = "";
-
-    bookings.forEach(function(booking) {
-        const row = document.createElement("tr");
-
-        row.innerHTML = `
-            <td>${booking.id}</td>
-            <td>${booking.name}</td>
-            <td>${booking.match}</td>
-            <td>${booking.stand}</td>
-            <td>${booking.quantity}</td>
-            <td>₹${booking.total}</td>
-        `;
-
-        bookingRecords.appendChild(row);
-    });
-}
-
-teamFilter.addEventListener("change", function() {
-    const selectedTeam = teamFilter.value;
-    const cards = document.querySelectorAll(".match-card");
-
-    cards.forEach(function(card) {
-        if (selectedTeam === "all" ||
-            card.textContent.includes(selectedTeam)) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
+        if (matchSelect) {
+            matchSelect.value = selectedMatch;
         }
+
+        if (bookingForm) {
+            bookingForm.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+
+        showToast(selectedMatch + " selected! Please complete your booking.");
     });
 });
-
-document.getElementById("clearBookings").addEventListener("click", function() {
-    localStorage.removeItem("bookings");
-    displayBookings();
-});
-
-updateSummary();
-displayBookings();
-
