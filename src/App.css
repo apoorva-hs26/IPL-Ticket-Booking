@@ -1,0 +1,145 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #222;
+}
+
+/* Navbar */
+.navbar {
+  background: #101b45;
+  color: white;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar h2 {
+  font-size: 26px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 25px;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: #ff8c00;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(120deg, #101b45, #e85d04);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  display: inline-block;
+  background: #ff8c00;
+  color: white;
+  padding: 13px 28px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.hero-btn:hover {
+  background: #d94b00;
+}
+
+/* Sections */
+section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+section h2 {
+  color: #101b45;
+  margin-bottom: 25px;
+}
+
+/* Match Cards */
+.match-card {
+  background: white;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px #ccc;
+  border-left: 6px solid #e85d04;
+}
+
+.match-card h2 {
+  color: #e85d04;
+  margin-bottom: 15px;
+}
+
+.match-card p {
+  margin: 12px;
+  font-size: 17px;
+}
+
+.match-card button {
+  background: #e85d04;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.match-card button:hover {
+  background: #101b45;
+}
+
+/* Footer */
+footer {
+  background: #101b45;
+  color: white;
+  text-align: center;
+  padding: 22px;
+  margin-top: 30px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .nav-links a {
+    margin: 8px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .match-card {
+    margin: 15px;
+  }
+}
