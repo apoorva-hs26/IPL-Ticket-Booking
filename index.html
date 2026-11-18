@@ -15,24 +15,46 @@
         <a href="#book">Book Ticket</a>
     </nav>
 
-    <section id="matches">
-        <h2>Upcoming Matches</h2>
+    
+<section id="book">
+    <h2>Book Your Ticket</h2>
 
-        <div class="match-card" data-teams="CSK MI">
-            <h3>CSK vs MI</h3>
-            <button class="btn-card" data-match="CSK vs MI">Book Ticket</button>
-        </div>
+    <form id="bookingForm">
+        <label>Name:</label>
+        <input type="text" id="name" required>
 
-        <div class="match-card" data-teams="RCB KKR">
-            <h3>RCB vs KKR</h3>
-            <button class="btn-card" data-match="RCB vs KKR">Book Ticket</button>
-        </div>
+        <label>Select Match:</label>
+        <select id="match" required>
+            <option value="">Choose Match</option>
+            <option value="CSK vs MI">CSK vs MI</option>
+            <option value="RCB vs KKR">RCB vs KKR</option>
+            <option value="SRH vs RR">SRH vs RR</option>
+        </select>
 
-        <div class="match-card" data-teams="SRH RR">
-            <h3>SRH vs RR</h3>
-            <button class="btn-card" data-match="SRH vs RR">Book Ticket</button>
-        </div>
-    </section>
+        <label>Stand Category:</label>
+        <select id="stand" required>
+            <option value="">Choose Stand</option>
+            <option value="General" data-price="500">General - ₹500</option>
+            <option value="Premium" data-price="1000">Premium - ₹1000</option>
+            <option value="VIP" data-price="2000">VIP - ₹2000</option>
+        </select>
+
+        <label>Ticket Quantity:</label>
+        <input type="number" id="quantity" min="1" max="10" value="1" required>
+
+        <button type="submit">Confirm Booking</button>
+    </form>
+
+    <div class="summary-card">
+        <h2>Booking Summary</h2>
+        <p>Name: <span id="summaryName">-</span></p>
+        <p>Match: <span id="summaryMatch">-</span></p>
+        <p>Stand: <span id="summaryStand">-</span></p>
+        <p>Quantity: <span id="summaryQuantity">0</span></p>
+        <h3>Total Price: ₹<span id="totalPrice">0</span></h3>
+    </div>
+</section>
+
 
     <section id="book">
         <h2>Book Your Ticket</h2>

@@ -1,7 +1,11 @@
 
-// Activity 4: JavaScript Basics and User Interaction
+const form = document.getElementById("bookingForm");
 
-// 1. Reusable Toast Notification Function
+const nameInput = document.getElementById("name");
+const matchInput = document.getElementById("match");
+const standInput = document.getElementById("stand");
+const quantityInput = document.getElementById("quantity");
+
 function showToast(message) {
     let toast = document.getElementById("toast");
 
@@ -12,51 +16,48 @@ function showToast(message) {
     }
 
     toast.textContent = message;
-    toast.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        background: #e85d04;
-        color: white;
-        padding: 15px 25px;
-        border-radius: 8px;
-        font-size: 16px;
-        z-index: 9999;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    `;
+    toast.style.cssText =
+        "position:fixed;top:20px;right:20px;background:green;color:white;padding:15px;border-radius:8px;z-index:9999;";
 
-    toast.style.display = "block";
-
-    clearTimeout(window.toastTimer);
-
-    window.toastTimer = setTimeout(() => {
-        toast.style.display = "none";
-    }, 3000);
+    setTimeout(() => toast.remove(), 2000);
 }
 
-// 2. Smooth Scrolling for Book Ticket Buttons
-const bookButtons = document.querySelectorAll(".btn-card");
+function updateSummary() {
+    const name = nameInput.value;
+    const match = matchInput.value;
+    const stand = standInput.value;
+    const quantity = Number(quantityInput.value);
 
-bookButtons.forEach(button => {
-    button.addEventListener("click", function () {
+    const selectedOption = standInput.options[standInput.selectedIndex];
+    const price = Number(selectedOption.dataset.price || 0);
 
-        const bookingForm = document.getElementById("book");
+    document.getElementById("summaryName").textContent = name || "-";
+    document.getElementById("summaryMatch").textContent = match || "-";
+    document.getElementById("summaryStand").textContent = stand || "-";
+    document.getElementById("summaryQuantity").textContent = quantity || 0;
 
-        const selectedMatch = this.getAttribute("data-match");
+    document.getElementById("totalPrice").textContent =
+        price * quantity;
 
-        const matchSelect = document.getElementById("match");
+    showToast("Booking summary updated!");
+}
 
-        if (matchSelect) {
-            matchSelect.value = selectedMatch;
-        }
+matchInput.addEventListener("change", updateSummary);
+standInput.addEventListener("change", updateSummary);
+quantityInput.addEventListener("input", updateSummary);
+nameInput.addEventListener("input", updateSummary);
 
-        if (bookingForm) {
-            bookingForm.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        }
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    updateSummary();
+    alert("Booking confirmed!");
+});
 
-        showToast(selectedMatch + " selected! Please complete your booking.");
+// Match card buttons
+document.querySelectorAll(".btn-card").forEach(button => {
+    button.addEventListener("click", function() {
+        matchInput.value = this.dataset.match;
+        updateSummary();
+        document.getElementById("book").scrollIntoView();
     });
 });
