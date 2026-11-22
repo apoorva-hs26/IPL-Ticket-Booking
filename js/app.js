@@ -1,4 +1,5 @@
 
+// Booking Form
 const form = document.getElementById("bookingForm");
 
 const nameInput = document.getElementById("name");
@@ -6,6 +7,7 @@ const matchInput = document.getElementById("match");
 const standInput = document.getElementById("stand");
 const quantityInput = document.getElementById("quantity");
 
+// Show Toast Message
 function showToast(message) {
     let toast = document.getElementById("toast");
 
@@ -22,13 +24,18 @@ function showToast(message) {
     setTimeout(() => toast.remove(), 2000);
 }
 
+// Update Booking Summary
 function updateSummary() {
+    if (!form) return;
+
     const name = nameInput.value;
     const match = matchInput.value;
     const stand = standInput.value;
     const quantity = Number(quantityInput.value);
 
-    const selectedOption = standInput.options[standInput.selectedIndex];
+    const selectedOption =
+        standInput.options[standInput.selectedIndex];
+
     const price = Number(selectedOption.dataset.price || 0);
 
     document.getElementById("summaryName").textContent = name || "-";
@@ -38,26 +45,86 @@ function updateSummary() {
 
     document.getElementById("totalPrice").textContent =
         price * quantity;
-
-    showToast("Booking summary updated!");
 }
 
-matchInput.addEventListener("change", updateSummary);
-standInput.addEventListener("change", updateSummary);
-quantityInput.addEventListener("input", updateSummary);
-nameInput.addEventListener("input", updateSummary);
+// Booking Form Events
+if (form) {
+    [nameInput, matchInput, standInput, quantityInput].forEach(input => {
+        input.addEventListener("input", updateSummary);
+        input.addEventListener("change", updateSummary);
+    });
 
-form.addEventListener("submit", function(event) {
-    event.preventDefault();
-    updateSummary();
-    alert("Booking confirmed!");
-});
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        updateSummary();
+        showToast("Booking Confirmed Successfully!");
+    });
+}
 
-// Match card buttons
+// Match Card Buttons
 document.querySelectorAll(".btn-card").forEach(button => {
     button.addEventListener("click", function() {
         matchInput.value = this.dataset.match;
         updateSummary();
-        document.getElementById("book").scrollIntoView();
+
+        document.getElementById("book").scrollIntoView({
+            behavior: "smooth"
+        });
     });
 });
+
+// Team Filter
+const teamFilter = document.getElementById("teamFilter");
+
+if (teamFilter) {
+    teamFilter.addEventListener("change", function() {
+        const selectedTeam = this.value;
+
+        document.querySelectorAll(".match-card").forEach(card => {
+            const team = card.dataset.team;
+
+            card.style.display =
+                selectedTeam === "all" ||
+                team === selectedTeam
+                ? ""
+                : "none";
+        });
+    });
+}
+
+// Grid and List View Toggle
+const viewToggle = document.getElementById("viewToggle");
+const matchContainer = document.getElementById("matchContainer");
+
+if (viewToggle && matchContainer) {
+    viewToggle.addEventListener("click", function() {
+        matchContainer.classList.toggle("list-view");
+
+        this.textContent =
+            matchContainer.classList.contains("list-view")
+            ? "Grid View"
+            : "List View";
+    });
+}
+
+// Mobile Hamburger Menu
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", function() {
+        navLinks.classList.toggle("active");
+
+        this.textContent =
+            navLinks.classList.contains("active")
+            ? "✕"
+            : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", function() {
+            navLinks.classList.remove("active");
+            menuToggle.textContent = "☰";
+        });
+    });
+}
