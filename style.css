@@ -111,3 +111,24 @@ form label {
 form button {
     margin: 5px;
 }
+
+/* Fix Hamburger Menu */
+@media screen and (max-width: 600px) {
+
+    #navLinks {
+        display: none !important;
+        flex-direction: column;
+        width: 100%;
+        padding: 15px;
+        background: #101b45;
+    }
+
+    #navLinks.active {
+        display: flex !important;
+    }
+
+    #menuToggle {
+        display: block !important;
+    }
+}
+
