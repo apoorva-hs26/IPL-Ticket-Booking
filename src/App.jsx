@@ -1,75 +1,30 @@
+import { useState } from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import MatchCard from "./components/MatchCard";
 
-import './App.css'
-
-import './App.css'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import MatchCard from './components/MatchCard'
+const matches = [
+  { id: 1, team1: "CSK", team2: "MI", date: "25 Nov 2026", venue: "Chennai" },
+  { id: 2, team1: "RCB", team2: "KKR", date: "27 Nov 2026", venue: "Bengaluru" },
+  { id: 3, team1: "SRH", team2: "DC", date: "29 Nov 2026", venue: "Hyderabad" }
+];
 
 function App() {
-
-  const matches = [
-    {
-      team1: 'RCB',
-      team2: 'CSK',
-      date: '15 April 2026',
-      venue: 'Bengaluru',
-      price: 1000
-    },
-    {
-      team1: 'MI',
-      team2: 'KKR',
-      date: '18 April 2026',
-      venue: 'Mumbai',
-      price: 1200
-    },
-    {
-      team1: 'SRH',
-      team2: 'RR',
-      date: '20 April 2026',
-      venue: 'Hyderabad',
-      price: 1500
-    },
-    {
-      team1: 'GT',
-      team2: 'DC',
-      date: '22 April 2026',
-      venue: 'Ahmedabad',
-      price: 1000
-    }
-  ]
-
   return (
-    <div>
+    <>
       <Navbar />
-
       <Hero />
 
       <section id="matches">
         <h2>Upcoming Matches</h2>
 
-        {matches.map((match, index) => (
-          <MatchCard
-            key={index}
-            team1={match.team1}
-            team2={match.team2}
-            date={match.date}
-            venue={match.venue}
-            price={match.price}
-          />
+        {matches.map((match) => (
+          <MatchCard key={match.id} match={match} />
         ))}
       </section>
-
-      <section id="booking">
-        <h2>Book Your Ticket</h2>
-        <p>Choose your match and enjoy the IPL!</p>
-      </section>
-
-      <footer>
-        <p>© 2026 IPL Ticket Booking</p>
-      </footer>
-    </div>
-  )
+    </>
+  );
 }
+const [selectedMatch, setSelectedMatch] = useState("");
 
-export default App
+export default App;

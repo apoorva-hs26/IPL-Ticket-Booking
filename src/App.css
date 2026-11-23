@@ -143,3 +143,28 @@ footer {
     margin: 15px;
   }
 }
+
+#matches {
+  padding: 30px;
+  text-align: center;
+}
+
+.match-card {
+  display: inline-block;
+  background: white;
+  color: #101b45;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px #999;
+  min-width: 220px;
+}
+
+.match-card button {
+  background: #e85d04;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
